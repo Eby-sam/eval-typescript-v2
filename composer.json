@@ -1,0 +1,7 @@
+{
+    "require": {
+        "gabordemooij/redbean": "^5.7",
+      "ext-pdo": "*",
+        "symfony/error-handler": "^6.2"
+    }
+}
