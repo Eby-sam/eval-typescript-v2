@@ -12,7 +12,7 @@
 <body>
     <h1>Apply Time Tracking</h1>
     <div id="divBut">
-        <button id="but"> NEW PROJECT </button>
+        <button id="but"> NEW Project</button>
     </div>
 
     <div id="containerTop">
