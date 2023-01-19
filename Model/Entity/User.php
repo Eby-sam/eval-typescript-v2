@@ -22,9 +22,10 @@ class User extends AbstractEntity {
     /**
      * @param bool $numberProject
      */
-    public function setNumberProject(bool $numberProject): void
+    public function setNumberProject(bool $numberProject): self
     {
         $this->numberProject = $numberProject;
+        return $this;
     }
 
     /**
@@ -38,9 +39,10 @@ class User extends AbstractEntity {
     /**
      * @param bool $numberTaches
      */
-    public function setNumberTaches(bool $numberTaches): void
+    public function setNumberTaches(bool $numberTaches): self
     {
         $this->numberTaches = $numberTaches;
+        return $this;
     }
 
 
