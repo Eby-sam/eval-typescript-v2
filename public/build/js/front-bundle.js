@@ -21,13 +21,41 @@ but.addEventListener('click', function () {
     }
 });
 // Create a new task when the "add task" button is clicked
+var editing = false;
 function createTache(event) {
     var button = event.target;
+    var taskContainer = document.createElement('div');
+    taskContainer.className = 'task-container';
     var task = document.createElement('div');
     task.className = 'task';
     task.innerText = "New Task";
+    taskContainer.appendChild(task);
+    var deleteButton = document.createElement('button');
+    deleteButton.className = 'delete';
+    deleteButton.innerText = 'Supprimer';
+    taskContainer.appendChild(deleteButton);
+    deleteButton.addEventListener('click', function () {
+        taskContainer.remove();
+    });
+    var input = document.createElement('input');
+    input.style.display = 'none';
+    taskContainer.appendChild(input);
+    var saveButton = document.createElement('button');
+    saveButton.style.display = 'none';
+    saveButton.innerText = 'Enregistrer';
+    taskContainer.appendChild(saveButton);
     var project = button.closest('.container');
-    project.querySelector('.taches').appendChild(task);
+    project.querySelector('.taches').appendChild(taskContainer);
+    task.addEventListener('dblclick', function () {
+        input.value = task.innerText;
+        input.style.display = 'block';
+        saveButton.style.display = 'block';
+    });
+    saveButton.addEventListener('click', function () {
+        task.innerText = input.value;
+        input.style.display = 'none';
+        saveButton.style.display = 'none';
+    });
 }
 document.addEventListener('click', function (event) {
     var button = event.target;

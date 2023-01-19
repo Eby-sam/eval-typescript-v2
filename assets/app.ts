@@ -19,13 +19,42 @@ but.addEventListener('click', () => {
 });
 
 // Create a new task when the "add task" button is clicked
+let editing = false;
+
 function createTache(event: MouseEvent) {
     let button = event.target as HTMLButtonElement;
+    let taskContainer = document.createElement('div');
+    taskContainer.className = 'task-container';
     let task = document.createElement('div');
     task.className = 'task';
     task.innerText = "New Task";
+    taskContainer.appendChild(task);
+    let deleteButton = document.createElement('button');
+    deleteButton.className = 'delete';
+    deleteButton.innerText = 'Supprimer';
+    taskContainer.appendChild(deleteButton);
+    deleteButton.addEventListener('click', () => {
+        taskContainer.remove();
+    });
+    let input = document.createElement('input');
+    input.style.display = 'none';
+    taskContainer.appendChild(input);
+    let saveButton = document.createElement('button');
+    saveButton.style.display = 'none';
+    saveButton.innerText = 'Enregistrer';
+    taskContainer.appendChild(saveButton);
     let project = button.closest('.container');
-    project.querySelector('.taches').appendChild(task);
+    project.querySelector('.taches').appendChild(taskContainer);
+    task.addEventListener('dblclick', () => {
+        input.value = task.innerText;
+        input.style.display = 'block';
+        saveButton.style.display = 'block';
+    });
+    saveButton.addEventListener('click', () => {
+        task.innerText = input.value;
+        input.style.display = 'none';
+        saveButton.style.display = 'none';
+    });
 }
 
 document.addEventListener('click', (event: MouseEvent) => {
