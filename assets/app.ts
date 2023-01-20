@@ -2,6 +2,7 @@ let but = document.getElementById('but') as HTMLButtonElement;
 let containerTop = document.getElementById('containerTop') as HTMLElement;
 let tmpl = document.getElementById('tmpl') as HTMLTemplateElement;
 let addBut = document.getElementsByClassName('new') as HTMLCollectionOf<HTMLButtonElement>;
+let titleProject = document.getElementsByClassName('titleProject');
 
 let currentProjet: number = 1;
 let currentButton: number = 1;
@@ -15,6 +16,18 @@ but.addEventListener('click', () => {
             projet.id = 'container' + currentProjet.toString();
             currentProjet++;
         });
+
+        titleProject.forEach((title) => {
+            title.addEventListener('dblclick', () => {
+                title.contentEditable = "true";
+            });
+        });
+        titleProject.forEach((title) => {
+            title.addEventListener('blur', () => {
+                title.contentEditable = "false";
+            });
+        });
+
     }
 });
 
@@ -29,19 +42,20 @@ function createTache(event: MouseEvent) {
     task.className = 'task';
     task.innerText = "New Task";
     taskContainer.appendChild(task);
-    let deleteButton = document.createElement('button');
-    deleteButton.className = 'delete';
-    deleteButton.innerText = 'Supprimer';
-    taskContainer.appendChild(deleteButton);
-    deleteButton.addEventListener('click', () => {
-        taskContainer.remove();
-    });
+
     let input = document.createElement('input');
     input.style.display = 'none';
     taskContainer.appendChild(input);
     let saveButton = document.createElement('button');
     saveButton.style.display = 'none';
-    saveButton.innerText = 'Enregistrer';
+    saveButton.style.backgroundColor = '#4bd94b';
+    saveButton.innerText = 'v';
+    saveButton.style.width = '30px';
+    saveButton.style.height = '30px';
+    saveButton.style.borderRadius = '50%';
+    saveButton.style.color = 'white';
+    saveButton.style.fontSize = '1rem';
+    saveButton.style.fontWeight = 'bold';
     taskContainer.appendChild(saveButton);
     let project = button.closest('.container');
     project.querySelector('.taches').appendChild(taskContainer);
@@ -54,6 +68,20 @@ function createTache(event: MouseEvent) {
         task.innerText = input.value;
         input.style.display = 'none';
         saveButton.style.display = 'none';
+    });
+    let deleteButton = document.createElement('button');
+    deleteButton.className = 'delete';
+    deleteButton.innerText = 'x';
+    deleteButton.style.backgroundColor = '#f54646';
+    deleteButton.style.width = '30px';
+    deleteButton.style.height = '30px';
+    deleteButton.style.borderRadius = '50%';
+    deleteButton.style.color = 'white';
+    deleteButton.style.fontSize = '1rem';
+    deleteButton.style.fontWeight = 'bold';
+    taskContainer.appendChild(deleteButton);
+    deleteButton.addEventListener('click', () => {
+        taskContainer.remove();
     });
 }
 

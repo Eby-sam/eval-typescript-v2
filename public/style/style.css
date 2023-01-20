@@ -92,10 +92,11 @@ body #containerTop .container .containerBlock .taches {
   margin-left: 3%;
   background-color: #ffffff !important;
 }
-body #containerTop .container .containerBlock .taches .detailTache {
-  width: 95%;
-  margin-left: auto;
-  margin-right: auto;
+body #containerTop .container .containerBlock .taches .task-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 body #containerTop .container .barre {
   display: flex;

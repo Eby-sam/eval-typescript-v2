@@ -106,13 +106,14 @@ body {
           margin-left: 3%;
           background-color: #ffffff !important;
 
-          .detailTache {
-            width: 95%;
-            margin-left: auto;
-            margin-right: auto;
-
+          .task-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
 
           }
+
         }
       }
 

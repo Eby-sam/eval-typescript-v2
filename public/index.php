@@ -22,7 +22,7 @@
     <template id="tmpl">
         <div class="container">
             <div class="divTitle">
-                <h2>hello</h2>
+                <h2 class="titleProject">hello</h2>
             </div>
             <div class="containerBlock">
                 <div class="time">
